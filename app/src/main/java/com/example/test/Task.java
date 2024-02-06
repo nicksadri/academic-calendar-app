@@ -13,4 +13,8 @@ public class Task extends Event {
     public String getTaskTitle() {
         return taskTitle;
     }
+
+    public boolean getCompleteness() {
+        return completeness;
+    }
 }

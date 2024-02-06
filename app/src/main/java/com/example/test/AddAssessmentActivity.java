@@ -14,6 +14,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class AddAssessmentActivity extends AppCompatActivity {
     private Button done;
     private Button cancel;
+
     private TextInputEditText courseName;
     private TextInputEditText date;
     private TextInputEditText time;

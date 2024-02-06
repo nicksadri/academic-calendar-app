@@ -3,6 +3,7 @@ package com.example.test;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -39,6 +40,12 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
         toDoListRecyclerView.setAdapter(toDoListAdapter);
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("ARRAYSIZE",""+taskMasterList.size());
     }
 
     public void addTask(View view) {

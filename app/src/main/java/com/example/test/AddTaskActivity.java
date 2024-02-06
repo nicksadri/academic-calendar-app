@@ -46,6 +46,7 @@ public class AddTaskActivity extends AppCompatActivity {
                     taskToAdd = new Task(year, month, day, courseName.getText().toString(), taskTitle.getText().toString(), false);
 
                     ToDoListActivity.getTaskMasterList().add(taskToAdd);
+
                     ToDoListActivity.getToDoListAdapter().notifyDataSetChanged();
                     Intent intent = new Intent(AddTaskActivity.this, ToDoListActivity.class);
                     startActivity(intent);

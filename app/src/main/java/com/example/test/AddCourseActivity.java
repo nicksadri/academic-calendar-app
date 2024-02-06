@@ -17,10 +17,8 @@ import java.util.HashSet;
 
 public class AddCourseActivity extends AppCompatActivity {
     //How do we let the user know that if they type regular event, they don't need classname or instructor??
-    private Button done ;
+    private Button done;
     private Button cancel;
-
-
 
     private TextInputEditText courseName;
     private TextInputEditText date;
