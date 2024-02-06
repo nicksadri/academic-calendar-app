@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enter_course_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:hint="Course Name:"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enter_date_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Date (Format: 05/28/2024):"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_course_course" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enter_location_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Location and Room:"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/enter_time_course"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enter_time_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Time (Format: 17:35):"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_date_course" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enter_meeting_days_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Meeting Days (Format: T,R or M,W,F):"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/enter_location_course" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enter_professor_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Professor:"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/enter_meeting_days_course"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enter_section_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Course Section:"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/enter_professor_course"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/done_button_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cancel_button_course"
+        app:layout_constraintTop_toBottomOf="@+id/enter_section_course" />
+
+    <Button
+        android:id="@+id/cancel_button_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Cancel"
+        app:layout_constraintEnd_toStartOf="@+id/done_button_course"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_section_course" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
