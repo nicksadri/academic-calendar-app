@@ -43,6 +43,22 @@ public class AddCourseActivity extends AppCompatActivity {
         meetingDays = findViewById(R.id.enter_meeting_days_course);
         section = findViewById(R.id.enter_section_course);
 
+        Intent intent = getIntent();
+        int pos = intent.getIntExtra("pos", -1);
+
+//        if (pos != -1) {
+//            Course course = (Course) Data.events.get(pos);
+//            time.setText("" + course.getStartHour() + ":" + course.getStartMinute());
+//            courseName.setText(course.getCourseName());
+//            date.setText("" + course.getMonth() + "/" + course.getDay() + "/" + course.getYear());
+//            location.setText(course.getBuilding_AND_room());
+//            professor.setText(course.getProfessor());
+//            //Ask Ben how stuff below works
+//            meetingDays.setText(course.getDaysOfWeekSet().toString());
+//            section.setText(course.getClassSection());
+//            Data.tasks.remove(course);
+//        }
+
         done = findViewById(R.id.done_button_course);
         done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +85,10 @@ public class AddCourseActivity extends AppCompatActivity {
                     MainActivity.getAdapter().notifyDataSetChanged();
                     Intent intent = new Intent(AddCourseActivity.this, MainActivity.class);
                     startActivity(intent);
+
+//                    Data.events.add(courseToAdd);
+//                    finish();
+
                 }
 
             }

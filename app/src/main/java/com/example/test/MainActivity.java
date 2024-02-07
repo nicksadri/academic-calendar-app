@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         Log.d("status", "initialize data");
         Data.tasks = new ArrayList<>();
+        Data.events = new ArrayList<>();
 
         addEvent = findViewById(R.id.add_event);
         toDo = findViewById(R.id.to_do_button_main);
@@ -105,11 +106,18 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     @Override
     public void whenClicked(int pos) {
         if (masterList.get(pos) instanceof Course) {
-            startActivity(new Intent(MainActivity.this, AddCourseActivity.class));
+            Intent intent1 = new Intent(MainActivity.this, AddCourseActivity.class);
+            intent1.putExtra("pos", pos);
+            startActivity(intent1);
+            masterList.remove(pos);
         } else if (masterList.get(pos) instanceof Assignment) {
-            startActivity(new Intent(MainActivity.this, AddAssignmentActivity.class));
+            Intent intent2 = new Intent(MainActivity.this, AddAssignmentActivity.class);
+            startActivity(intent2);
+            masterList.remove(pos);
         } else if (masterList.get(pos) instanceof Assessment) {
-            startActivity(new Intent(MainActivity.this, AddAssessmentActivity.class));
+            Intent intent3 = new Intent(MainActivity.this, AddAssessmentActivity.class);
+            startActivity(intent3);
+            masterList.remove(pos);
         }
     }
 

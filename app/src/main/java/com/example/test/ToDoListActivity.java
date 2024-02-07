@@ -56,7 +56,9 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
     }
 
     public void returnHome(View view) {
-        startActivity(new Intent(ToDoListActivity.this, MainActivity.class));
+        Intent intent = new Intent(ToDoListActivity.this, MainActivity.class);
+        intent.putExtra("tasks", Data.tasks);
+        startActivity(intent);
     }
 
     @Override

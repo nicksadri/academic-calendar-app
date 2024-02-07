@@ -47,6 +47,7 @@ public class AddAssignmentActivity extends AppCompatActivity {
                     MainActivity.getAdapter().notifyDataSetChanged();
                     Intent intent = new Intent(AddAssignmentActivity.this, MainActivity.class);
                     startActivity(intent);
+
                 }
 
             }
