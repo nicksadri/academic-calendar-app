@@ -3,6 +3,7 @@ package com.example.test;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -28,9 +29,23 @@ public class AddTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_task);
+
+        Intent intent = getIntent();
+
+        int pos = intent.getIntExtra("pos", -1);
+        Log.d("Pos", ""+pos);
+
         courseName = findViewById(R.id.enter_course_task);
         date = findViewById(R.id.enter_date_task);
         taskTitle = findViewById(R.id.enter_title_task);
+
+        if (pos != -1) {
+            Task task = Data.tasks.get(pos);
+            taskTitle.setText(task.getTaskTitle());
+            courseName.setText(task.getCourseName());
+            date.setText("01/01/2024");
+            Data.tasks.remove(task);
+        }
 
         done = findViewById(R.id.done_button_task);
         done.setOnClickListener(new View.OnClickListener() {
@@ -45,11 +60,12 @@ public class AddTaskActivity extends AppCompatActivity {
 
                     taskToAdd = new Task(year, month, day, courseName.getText().toString(), taskTitle.getText().toString(), false);
 
-                    ToDoListActivity.getTaskMasterList().add(taskToAdd);
+                    Data.tasks.add(taskToAdd);
 
-                    ToDoListActivity.getToDoListAdapter().notifyDataSetChanged();
-                    Intent intent = new Intent(AddTaskActivity.this, ToDoListActivity.class);
-                    startActivity(intent);
+//                    ToDoListActivity.getToDoListAdapter().notifyDataSetChanged();
+//                    Intent intent = new Intent(AddTaskActivity.this, ToDoListActivity.class);
+//                    startActivity(intent);
+                    finish();
                 }
 
             }
@@ -85,7 +101,8 @@ public class AddTaskActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddTaskActivity.this, MainActivity.class));
+                finish();
+//                startActivity(new Intent(AddTaskActivity.this, MainActivity.class));
             }
         });
 

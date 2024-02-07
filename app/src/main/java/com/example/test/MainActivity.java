@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.*;
 
 import android.widget.Button;
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d("status", "initialize data");
+        Data.tasks = new ArrayList<>();
 
         addEvent = findViewById(R.id.add_event);
         toDo = findViewById(R.id.to_do_button_main);

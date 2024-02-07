@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerViewAdapter.ViewHolder> {
     private Context context;
-    private static ArrayList<Task> dataArrayList = new ArrayList<Task>();
+//    private static ArrayList<Task> dataArrayList = new ArrayList<Task>();
     private final RecyclerViewInterface recyclerViewInterface;
 
     private TextView courseName;
@@ -23,7 +23,7 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
 
     public ToDoRecyclerViewAdapter(Context context, ArrayList<Task> dataSet, RecyclerViewInterface r) {
         this.context = context;
-        this.dataArrayList = dataSet;
+//        this.dataArrayList = dataSet;
         this.recyclerViewInterface = r;
     }
 
@@ -35,13 +35,7 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("DATA", "" + dataArrayList.get(getAdapterPosition()));
-                    if (recyclerViewInterface != null) {
-                        int pos = getAdapterPosition();
-                        if (pos != RecyclerView.NO_POSITION) {
-                            recyclerViewInterface.whenClicked(pos);
-                        }
-                    }
+
                 }
             });
         }
@@ -86,18 +80,28 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        Log.d("dataArraylist", ""+dataArrayList.size());
+        Log.d("dataArraylist", ""+Data.tasks.size());
 
-        Task task = dataArrayList.get(position);
+        Task task = Data.tasks.get(position);
         getCourseName().setText(task.getCourseName());
         getDate().setText((String) ("" + task.getMonth() + "/" + task.getDay()));
         getTaskTitle().setText(task.getTaskTitle());
         getCompleteness().setText(task.getCompleteness() ? "complete" : "incomplete");
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (recyclerViewInterface != null) {
+
+                    recyclerViewInterface.whenClicked(position);
+                }
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return dataArrayList.size();
+        return Data.tasks.size();
     }
 }

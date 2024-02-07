@@ -18,7 +18,7 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
     private Button addTaskButton;
     private Button returnButton;
 
-    private static ArrayList<Task> taskMasterList = new ArrayList<>();
+//    private static ArrayList<Task> taskMasterList;
     private RecyclerView toDoListRecyclerView;
 
 
@@ -30,11 +30,13 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.to_do_list);
 
+//        taskMasterList = new ArrayList<>();
+
         addTaskButton = findViewById(R.id.add_task);
         returnButton = findViewById(R.id.return_button);
 
         toDoListRecyclerView = findViewById(R.id.recyclerViewForToDo);
-        toDoListAdapter = new ToDoRecyclerViewAdapter(this, taskMasterList, this);
+        toDoListAdapter = new ToDoRecyclerViewAdapter(this, Data.tasks, this);
 
         toDoListRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         toDoListRecyclerView.setAdapter(toDoListAdapter);
@@ -45,7 +47,8 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("ARRAYSIZE",""+taskMasterList.size());
+        Log.d("ARRAYSIZE",""+Data.tasks.size());
+        toDoListAdapter.notifyDataSetChanged();
     }
 
     public void addTask(View view) {
@@ -58,17 +61,22 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
 
     @Override
     public void whenClicked(int pos) {
-        if (MainActivity.getMasterList().get(pos) instanceof Assignment) {
-            startActivity(new Intent(ToDoListActivity.this, AddAssignmentActivity.class));
-        } else if (MainActivity.getMasterList().get(pos) instanceof Assessment) {
-            startActivity(new Intent(ToDoListActivity.this, AddAssessmentActivity.class));
-        } else if (MainActivity.getMasterList().get(pos) instanceof Task) {
-            startActivity(new Intent(ToDoListActivity.this, AddTaskActivity.class));
-        }
+        Intent intent = new Intent(ToDoListActivity.this, AddTaskActivity.class);
+
+        intent.putExtra("pos", pos);
+        startActivity(intent);
+
+//        if (MainActivity.getMasterList().get(pos) instanceof Assignment) {
+//            startActivity(new Intent(ToDoListActivity.this, AddAssignmentActivity.class));
+//        } else if (MainActivity.getMasterList().get(pos) instanceof Assessment) {
+//            startActivity(new Intent(ToDoListActivity.this, AddAssessmentActivity.class));
+//        } else if (MainActivity.getMasterList().get(pos) instanceof Task) {
+//            startActivity(new Intent(ToDoListActivity.this, AddTaskActivity.class));
+//        }
     }
 
     public static ArrayList<Task> getTaskMasterList() {
-        return taskMasterList;
+        return Data.tasks;
     }
 
     public static ToDoRecyclerViewAdapter getToDoListAdapter() {
@@ -99,6 +107,11 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
             }
             taskMasterList.set(j + 1, temp);
         }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("Status", "Destroyed");
     }
 
 }
