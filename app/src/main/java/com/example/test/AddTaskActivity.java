@@ -34,12 +34,13 @@ public class AddTaskActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int pos = intent.getIntExtra("pos", -1);
-        Log.d("Pos", ""+pos);
+//        int pos = intent.getIntExtra("pos", -1);
+//        Log.d("Pos", ""+pos);
 
         courseName = findViewById(R.id.enter_course_task);
         date = findViewById(R.id.enter_date_task);
         taskTitle = findViewById(R.id.enter_title_task);
+
 
         if (pos != -1) {
             Task task = Data.tasks.get(pos);
@@ -48,6 +49,7 @@ public class AddTaskActivity extends AppCompatActivity {
             date.setText("" + task.getMonth() + "/" + task.getDay() + "/" + task.getYear());
             Data.tasks.remove(task);
         }
+
 
         done = findViewById(R.id.done_button_task);
         done.setOnClickListener(new View.OnClickListener() {
