@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         setContentView(R.layout.activity_main);
 
         Log.d("status", "initialize data");
-        Data.tasks = new ArrayList<>();
+//        Data.tasks = new ArrayList<>();
 
         addEvent = findViewById(R.id.add_event);
         toDo = findViewById(R.id.to_do_button_main);

@@ -24,6 +24,8 @@ public class AddTaskActivity extends AppCompatActivity {
     private TextInputEditText taskTitle;
     private Task taskToAdd;
 
+    private boolean canceledEdit;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class AddTaskActivity extends AppCompatActivity {
             Task task = Data.tasks.get(pos);
             taskTitle.setText(task.getTaskTitle());
             courseName.setText(task.getCourseName());
-            date.setText("01/01/2024");
+            date.setText("" + task.getMonth() + "/" + task.getDay() + "/" + task.getYear());
             Data.tasks.remove(task);
         }
 
@@ -58,8 +60,8 @@ public class AddTaskActivity extends AppCompatActivity {
                     int day = Integer.valueOf(dateArr[1]);
                     int year = Integer.valueOf(dateArr[2]);
 
-                    taskToAdd = new Task(year, month, day, courseName.getText().toString(), taskTitle.getText().toString(), false);
 
+                    taskToAdd = new Task(year, month, day, courseName.getText().toString(), taskTitle.getText().toString(), false);
                     Data.tasks.add(taskToAdd);
 
 //                    ToDoListActivity.getToDoListAdapter().notifyDataSetChanged();

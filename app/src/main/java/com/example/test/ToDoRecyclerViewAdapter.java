@@ -1,14 +1,51 @@
 package com.example.test;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentSender;
+import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.UserHandle;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.navigation.NavHost;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerViewAdapter.ViewHolder> {
@@ -20,11 +57,18 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
     private TextView date;
     private TextView taskTitle;
     private TextView completeness;
+    private Button deleteButton;
+    private Button editButton;
+    private Button completedButton;
 
-    public ToDoRecyclerViewAdapter(Context context, ArrayList<Task> dataSet, RecyclerViewInterface r) {
+    public ToDoRecyclerViewAdapter(Context context, ArrayList<Task> dataSet, RecyclerViewInterface r, Button edit, Button delete, Button complete) {
         this.context = context;
-//        this.dataArrayList = dataSet;
+        //this.dataArrayList = dataSet;
         this.recyclerViewInterface = r;
+        this.editButton = edit;
+        this.deleteButton = delete;
+        this.completedButton = complete;
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -38,8 +82,35 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
 
                 }
             });
-        }
 
+            view.findViewById(R.id.editToDoButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), AddTaskActivity.class);
+
+                    intent.putExtra("pos", getAdapterPosition());
+                    startActivity(v.getContext(), intent, null);
+                   // ToDoListActivity.updateToDoRecyclerView(getAdapterPosition());
+                }
+            });
+
+            view.findViewById(R.id.deleteToDoItem).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Goes to data class and removes item from backing ArrayList
+                    Data.deleteToDoAtPos(getAdapterPosition());
+                    // Updates the RecyclerView after item has been deleted
+                    ToDoListActivity.updateToDoRemovedRecyclerView(getAdapterPosition());
+                }
+            });
+
+            view.findViewById(R.id.completedButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
 
 
     }

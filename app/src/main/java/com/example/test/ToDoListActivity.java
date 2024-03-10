@@ -17,8 +17,12 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
 
     private Button addTaskButton;
     private Button returnButton;
+    private Button editToDoButton;
+    private Button deleteToDoButton;
+    private Button completedButton;
+    private Button dateSortButton;
 
-//    private static ArrayList<Task> taskMasterList;
+    //private static ArrayList<Task> taskMasterList = Data.tasks;
     private RecyclerView toDoListRecyclerView;
 
 
@@ -34,9 +38,15 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
 
         addTaskButton = findViewById(R.id.add_task);
         returnButton = findViewById(R.id.return_button);
+        editToDoButton = findViewById(R.id.editToDoButton);
+        deleteToDoButton = findViewById(R.id.deleteToDoItem);
+        completedButton = findViewById(R.id.completedButton);
+        this.dateSortButton = findViewById(R.id.sortByDateButton);
+
 
         toDoListRecyclerView = findViewById(R.id.recyclerViewForToDo);
-        toDoListAdapter = new ToDoRecyclerViewAdapter(this, Data.tasks, this);
+        //EDITED HERE
+        toDoListAdapter = new ToDoRecyclerViewAdapter(this, Data.tasks, this, editToDoButton, deleteToDoButton, completedButton);
 
         toDoListRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         toDoListRecyclerView.setAdapter(toDoListAdapter);
@@ -47,6 +57,7 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
     @Override
     public void onResume() {
         super.onResume();
+        //EDITED HERE
         Log.d("ARRAYSIZE",""+Data.tasks.size());
         toDoListAdapter.notifyDataSetChanged();
     }
@@ -59,12 +70,22 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
         startActivity(new Intent(ToDoListActivity.this, MainActivity.class));
     }
 
+    public void dateSort(View view) {
+        Data.sortByDate();
+        toDoListAdapter.notifyDataSetChanged();
+    }
+
+    // Updates the recyclerView after delete button is pressed
+    public static void updateToDoRemovedRecyclerView(int pos) {
+        toDoListAdapter.notifyItemRemoved(pos);
+    }
+
     @Override
     public void whenClicked(int pos) {
-        Intent intent = new Intent(ToDoListActivity.this, AddTaskActivity.class);
-
-        intent.putExtra("pos", pos);
-        startActivity(intent);
+//        Intent intent = new Intent(ToDoListActivity.this, AddTaskActivity.class);
+//
+//        intent.putExtra("pos", pos);
+//        startActivity(intent);
 
 //        if (MainActivity.getMasterList().get(pos) instanceof Assignment) {
 //            startActivity(new Intent(ToDoListActivity.this, AddAssignmentActivity.class));
@@ -75,6 +96,7 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
 //        }
     }
 
+    //EDITED HERE
     public static ArrayList<Task> getTaskMasterList() {
         return Data.tasks;
     }
@@ -96,7 +118,7 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
         }
     }
 
-    public static void sortBytaskTitle(ArrayList<Task> taskMasterList) { //CHECK
+    public static void sortByTaskTitle(ArrayList<Task> taskMasterList) { //CHECK
         for (int i = 1; i < taskMasterList.size(); i++) {
             Task temp = taskMasterList.get(i);
             int j = i - 1;
