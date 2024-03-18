@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class AddAssessmentActivity extends AppCompatActivity {
+public class AddExamActivity extends AppCompatActivity {
     private Button done;
     private Button cancel;
 
@@ -54,9 +54,9 @@ public class AddAssessmentActivity extends AppCompatActivity {
                             assessTitle.getText().toString(), location.getText().toString(),
                     currStartHour, currStartMinute);
 
-                    MainActivity.getMasterList().add(assessmentToAdd);
-                    MainActivity.getAdapter().notifyDataSetChanged();
-                    Intent intent = new Intent(AddAssessmentActivity.this, MainActivity.class);
+                    SeeExamsActivity.getMasterList().add(assessmentToAdd);
+                    SeeExamsActivity.getAdapter().notifyDataSetChanged();
+                    Intent intent = new Intent(AddExamActivity.this, SeeExamsActivity.class);
                     startActivity(intent);
                 }
 
@@ -98,7 +98,7 @@ public class AddAssessmentActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddAssessmentActivity.this, MainActivity.class));
+                startActivity(new Intent(AddExamActivity.this, SeeExamsActivity.class));
             }
         });
     }

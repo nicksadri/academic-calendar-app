@@ -43,15 +43,13 @@ public class AddAssignmentActivity extends AppCompatActivity {
 
                     assignmentToAdd = new Assignment(year, month, day, courseName.getText().toString(), assignmentTitle.getText().toString());
 
-                    MainActivity.getMasterList().add(assignmentToAdd);
-                    MainActivity.getAdapter().notifyDataSetChanged();
-                    Intent intent = new Intent(AddAssignmentActivity.this, MainActivity.class);
+                    SeeAssignmentsActivity.getMasterList().add(assignmentToAdd);
+                    SeeAssignmentsActivity.getAdapter().notifyDataSetChanged();
+                    Intent intent = new Intent(AddAssignmentActivity.this, SeeAssignmentsActivity.class);
                     startActivity(intent);
-
                 }
 
             }
-
 
             boolean validInputs() { //Sees if the user inputs are valid
                 try {
@@ -81,7 +79,7 @@ public class AddAssignmentActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddAssignmentActivity.this, MainActivity.class));
+                startActivity(new Intent(AddAssignmentActivity.this, SeeAssignmentsActivity.class));
             }
         });
     }

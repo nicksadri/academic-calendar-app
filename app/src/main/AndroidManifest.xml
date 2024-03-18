@@ -16,7 +16,7 @@
             android:name=".AddCourseActivity"
             android:exported="true" />
         <activity
-            android:name=".AddAssessmentActivity"
+            android:name=".AddExamActivity"
             android:exported="true" />
         <activity
             android:name=".AddAssignmentActivity"
@@ -28,7 +28,13 @@
             android:name=".AddTaskActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SeeExamsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SeeAssignmentsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SeeCoursesActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Test">

@@ -5,14 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class AddCourseActivity extends AppCompatActivity {
@@ -81,9 +79,9 @@ public class AddCourseActivity extends AppCompatActivity {
                             location.getText().toString(), currStartHour, currStartMinute,
                             meetingDaysArray);
 
-                    MainActivity.getMasterList().add(courseToAdd);
-                    MainActivity.getAdapter().notifyDataSetChanged();
-                    Intent intent = new Intent(AddCourseActivity.this, MainActivity.class);
+                    SeeCoursesActivity.getMasterList().add(courseToAdd);
+                    SeeCoursesActivity.getAdapter().notifyDataSetChanged();
+                    Intent intent = new Intent(AddCourseActivity.this, SeeCoursesActivity.class);
                     startActivity(intent);
 
 //                    Data.events.add(courseToAdd);
@@ -159,7 +157,7 @@ public class AddCourseActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddCourseActivity.this, MainActivity.class));
+                startActivity(new Intent(AddCourseActivity.this, SeeCoursesActivity.class));
             }
         });
     }
