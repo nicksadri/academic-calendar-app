@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Data {
 
     public static ArrayList<Task> tasks = new ArrayList<>();;
-    public static ArrayList<Assignment> assignments;
+    public static ArrayList<Event> events = new ArrayList<Event>();
     public static int pos = 0;
 
     public static void deleteToDoAtPos(int pos) {

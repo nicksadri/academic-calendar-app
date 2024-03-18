@@ -17,7 +17,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
     public MainRecyclerViewAdapter(Context context, ArrayList<Event> dataSet, RecyclerViewInterface r) {
         this.context = context;
-        this.dataArrayList = dataSet;
+        this.dataArrayList = Data.events;
         this.recyclerViewInterface = r;
     }
 

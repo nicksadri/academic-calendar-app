@@ -23,6 +23,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private TextInputEditText date;
     private TextInputEditText taskTitle;
     private Task taskToAdd;
+    private Task toBeRemoved = null;
 
     private boolean canceledEdit;
 
@@ -47,7 +48,8 @@ public class AddTaskActivity extends AppCompatActivity {
             taskTitle.setText(task.getTaskTitle());
             courseName.setText(task.getCourseName());
             date.setText("" + task.getMonth() + "/" + task.getDay() + "/" + task.getYear());
-            Data.tasks.remove(task);
+//            Data.tasks.remove(task);
+            toBeRemoved = new Task(task.getYear(), task.getMonth(), task.getDay(), task.getCourseName(), task.getTaskTitle(), false);
         }
 
 
@@ -65,6 +67,9 @@ public class AddTaskActivity extends AppCompatActivity {
 
                     taskToAdd = new Task(year, month, day, courseName.getText().toString(), taskTitle.getText().toString(), false);
                     Data.tasks.add(taskToAdd);
+                    if (toBeRemoved != null) {
+                        Data.tasks.remove(toBeRemoved);
+                    }
 
 //                    ToDoListActivity.getToDoListAdapter().notifyDataSetChanged();
 //                    Intent intent = new Intent(AddTaskActivity.this, ToDoListActivity.class);
