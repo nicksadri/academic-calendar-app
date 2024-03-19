@@ -19,7 +19,7 @@ public class SeeCoursesActivity extends AppCompatActivity implements RecyclerVie
 
     private static ArrayList<Event> masterList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private static MainRecyclerViewAdapter adapter;
+    private static CourseRecyclerViewAdapter adapter;
 
     //Plan to scan through the .txt and put data into
 
@@ -31,7 +31,7 @@ public class SeeCoursesActivity extends AppCompatActivity implements RecyclerVie
         toDo = findViewById(R.id.to_do_button_main);
 
         recyclerView = findViewById(R.id.coursesRecyclerView);
-        adapter = new MainRecyclerViewAdapter(this, masterList, this);
+        adapter = new CourseRecyclerViewAdapter(this, masterList, this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
@@ -66,7 +66,7 @@ public class SeeCoursesActivity extends AppCompatActivity implements RecyclerVie
         return masterList;
     }
 
-    public static MainRecyclerViewAdapter getAdapter() {
+    public static CourseRecyclerViewAdapter getAdapter() {
         return adapter;
     }
 

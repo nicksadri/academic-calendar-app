@@ -19,7 +19,7 @@ public class SeeExamsActivity extends AppCompatActivity implements RecyclerViewI
 
     private static ArrayList<Event> masterList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private static MainRecyclerViewAdapter adapter;
+    private static ExamRecyclerViewAdapter adapter;
 
 
     @Override
@@ -34,7 +34,7 @@ public class SeeExamsActivity extends AppCompatActivity implements RecyclerViewI
         toDo = findViewById(R.id.to_do_button_main);
 
         recyclerView = findViewById(R.id.examsRecyclerView);
-        adapter = new MainRecyclerViewAdapter(this, masterList, this);
+        adapter = new ExamRecyclerViewAdapter(this, masterList, this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
@@ -68,7 +68,7 @@ public class SeeExamsActivity extends AppCompatActivity implements RecyclerViewI
         return masterList;
     }
 
-    public static MainRecyclerViewAdapter getAdapter() {
+    public static ExamRecyclerViewAdapter getAdapter() {
         return adapter;
     }
 

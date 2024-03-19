@@ -9,16 +9,15 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder> {
+public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
     private Context context;
     private ArrayList<Event> dataArrayList;
     private final RecyclerViewInterface recyclerViewInterface;
 
-    public MainRecyclerViewAdapter(Context context, ArrayList<Event> dataSet, RecyclerViewInterface r) {
+    public CourseRecyclerViewAdapter(Context context, ArrayList<Event> dataSet, RecyclerViewInterface r) {
         this.context = context;
-        this.dataArrayList = Data.events;
+        this.dataArrayList = SeeCoursesActivity.getMasterList();
         this.recyclerViewInterface = r;
     }
 

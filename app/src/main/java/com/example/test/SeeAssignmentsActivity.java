@@ -19,7 +19,7 @@ public class SeeAssignmentsActivity extends AppCompatActivity implements Recycle
 
     private static ArrayList<Event> masterList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private static MainRecyclerViewAdapter adapter;
+    private static AssignmentRecyclerViewAdapter adapter;
 
 
     @Override
@@ -34,7 +34,7 @@ public class SeeAssignmentsActivity extends AppCompatActivity implements Recycle
         toDo = findViewById(R.id.to_do_button_main);
 
         recyclerView = findViewById(R.id.assignmentsRecyclerView);
-        adapter = new MainRecyclerViewAdapter(this, masterList, this);
+        adapter = new AssignmentRecyclerViewAdapter(this, masterList, this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
@@ -68,7 +68,7 @@ public class SeeAssignmentsActivity extends AppCompatActivity implements Recycle
         return masterList;
     }
 
-    public static MainRecyclerViewAdapter getAdapter() {
+    public static AssignmentRecyclerViewAdapter getAdapter() {
         return adapter;
     }
 
