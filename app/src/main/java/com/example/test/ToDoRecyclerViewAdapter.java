@@ -47,6 +47,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerViewAdapter.ViewHolder> {
     private Context context;
@@ -159,6 +160,7 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
         getTaskTitle().setText(task.getTaskTitle());
         getCompleteness().setText(task.getCompleteness() ? "complete" : "incomplete");
 
+        viewHolder.setIsRecyclable(false);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,5 +176,15 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
     @Override
     public int getItemCount() {
         return Data.tasks.size();
+    }
+
+    public void update(List<Task> data) {
+        if (data != null) {
+            ArrayList<Task> temp = new ArrayList<>();
+            temp.addAll(data);
+            Data.tasks.clear();
+            Data.tasks.addAll(temp);
+            notifyDataSetChanged();
+        }
     }
 }

@@ -73,18 +73,11 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
     }
 
     public void dateSort(View view) {
-        Data.sortByDate();
-        for (int i = 0; i < Data.tasks.size(); i++) {
-            toDoListAdapter.notifyItemChanged(i);
-        }
-//        toDoListAdapter.notifyDataSetChanged();
+        toDoListAdapter.update(Data.sortByDate());
     }
 
     public void nameSort(View view) {
-        Data.sortByTaskTitle();
-        for (int i = 0; i < Data.tasks.size(); i++) {
-            toDoListAdapter.notifyItemChanged(i);
-        }
+        toDoListAdapter.update(Data.sortByTaskTitle());
     }
 
     // Updates the recyclerView after delete button is pressed

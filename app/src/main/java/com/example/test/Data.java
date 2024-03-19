@@ -4,9 +4,9 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Data {
-
     public static ArrayList<Task> tasks = new ArrayList<>();;
     public static ArrayList<Event> events = new ArrayList<Event>();
     public static int pos = 0;
@@ -20,7 +20,7 @@ public class Data {
 //        }
     }
 
-    public static void sortByDate() { //CHECK
+    public static List<Task> sortByDate() { //CHECK
         for (int i = 1; i < tasks.size(); i++) {
             Task temp = tasks.get(i);
             int j = i - 1;
@@ -31,9 +31,10 @@ public class Data {
             }
             tasks.set(j + 1, temp);
         }
+        return tasks;
     }
 
-    public static void sortByTaskTitle() { //CHECK
+    public static List<Task> sortByTaskTitle() { //CHECK
         for (int i = 1; i < tasks.size(); i++) {
             Task temp = tasks.get(i);
             int j = i - 1;
@@ -44,6 +45,8 @@ public class Data {
             }
             tasks.set(j + 1, temp);
         }
+        return tasks;
     }
+
 }
     
