@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#c2e7ff"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <Button
@@ -14,6 +14,7 @@
         android:layout_marginBottom="52dp"
         android:onClick="addTask"
         android:text="Add Task"
+        android:backgroundTint="#0d19ba"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -50,6 +51,7 @@
         android:layout_marginTop="10dp"
         android:onClick="returnHome"
         android:text="Return"
+        android:backgroundTint="#0d19ba"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,6 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
         android:text="Date Sort"
+        android:backgroundTint="#0d19ba"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/add_task"
         app:layout_constraintHorizontal_bias="0.704"
@@ -71,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
         android:text="Name Sort"
+        android:backgroundTint="#0d19ba"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"

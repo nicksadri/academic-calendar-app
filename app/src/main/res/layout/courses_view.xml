@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#c2e7ff"
     android:onClick="seeAssignments"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -16,6 +16,7 @@
         android:layout_marginTop="10dp"
         android:onClick="goToToDo"
         android:text="To-Do"
+        android:backgroundTint="#0d19ba"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +38,7 @@
         android:onClick="addCourse"
         android:text="Add Course"
         android:visibility="visible"
+        android:backgroundTint="#0d19ba"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -50,6 +52,7 @@
         android:onClick="seeAssignments"
         android:text="See Assignments"
         android:visibility="visible"
+        android:backgroundTint="#0d19ba"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -62,6 +65,7 @@
         android:onClick="seeExams"
         android:text="See\nExams"
         android:visibility="visible"
+        android:backgroundTint="#0d19ba"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
