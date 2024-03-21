@@ -87,8 +87,8 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         if (event instanceof Course) {
             viewHolder.getLocation().setText(((Course) (event)).getBuilding_AND_room());
         }
-        if (event instanceof Assessment) {
-            viewHolder.getLocation().setText(((Assessment) (event)).getBuilding_AND_room());
+        if (event instanceof Exam) {
+            viewHolder.getLocation().setText(((Exam) (event)).getBuilding_AND_room());
         }
         if (event instanceof Course) {
             viewHolder.getProfessorOrTitle().setText(((Course) (event)).getProfessor());
@@ -96,8 +96,8 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         if (event instanceof Assignment) {
             viewHolder.getProfessorOrTitle().setText(((Assignment) (event)).getAssignmentTitle());
         }
-        if (event instanceof Assessment) {
-            viewHolder.getProfessorOrTitle().setText(((Assessment) (event)).getTestTitle());
+        if (event instanceof Exam) {
+            viewHolder.getProfessorOrTitle().setText(((Exam) (event)).getTestTitle());
         }
     }
 

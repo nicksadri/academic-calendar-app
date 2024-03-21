@@ -15,7 +15,6 @@ import android.widget.Button;
 
 public class SeeAssignmentsActivity extends AppCompatActivity implements RecyclerViewInterface {
     private Button addEvent;
-    private Button toDo;
 
     private static ArrayList<Event> masterList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -28,10 +27,6 @@ public class SeeAssignmentsActivity extends AppCompatActivity implements Recycle
         setContentView(R.layout.assignments_view);
 
         Log.d("status", "initialize data");
-
-
-
-        toDo = findViewById(R.id.to_do_button_main);
 
         recyclerView = findViewById(R.id.assignmentsRecyclerView);
         adapter = new AssignmentRecyclerViewAdapter(this, masterList, this);

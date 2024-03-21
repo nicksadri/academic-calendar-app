@@ -1,6 +1,6 @@
 package com.example.test;
 
-public class Assessment extends Event {
+public class Exam extends Event {
     private String testTitle;
     private String building_AND_room;
     private int startHour;
@@ -17,8 +17,8 @@ public class Assessment extends Event {
      * @param startHour start time hour 0-23
      * @param startMinute end time 0-59
      */
-    public Assessment(int year, int month, int day, String courseName, String testTitle,
-                      String building_AND_room, int startHour, int startMinute) {
+    public Exam(int year, int month, int day, String courseName, String testTitle,
+                String building_AND_room, int startHour, int startMinute) {
         super(year, month, day, courseName);
         this.testTitle = testTitle;
         this.building_AND_room = building_AND_room;
@@ -76,7 +76,7 @@ public class Assessment extends Event {
         if (obj == null) {
             return false;
         } else if (this.getClass().equals(obj.getClass())) {
-            Assessment cp = (Assessment) obj;
+            Exam cp = (Exam) obj;
             return super.equals(obj) && this.testTitle.equals(cp.testTitle) &&
                     this.building_AND_room.equals(cp.building_AND_room) &&
                     this.startHour == startHour && this.startMinute == startMinute;
@@ -85,7 +85,7 @@ public class Assessment extends Event {
         }
     }
 
-    public int compareTo(Assessment o) {
+    public int compareTo(Exam o) {
         if (super.compareTo(o) == 0) {
             if (this.startHour < o.startHour) {
                 return -1;

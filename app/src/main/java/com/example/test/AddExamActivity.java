@@ -20,7 +20,7 @@ public class AddExamActivity extends AppCompatActivity {
     private TextInputEditText time;
     private TextInputEditText location;
     private TextInputEditText assessTitle;
-    private Assessment assessmentToAdd;
+    private Exam assessmentToAdd;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -50,7 +50,7 @@ public class AddExamActivity extends AppCompatActivity {
                     int currStartHour = Integer.valueOf(currStartArr[0]);
                     int currStartMinute = Integer.valueOf(currStartArr[1]);
 
-                    assessmentToAdd = new Assessment(year, month, day, courseName.getText().toString(),
+                    assessmentToAdd = new Exam(year, month, day, courseName.getText().toString(),
                             assessTitle.getText().toString(), location.getText().toString(),
                     currStartHour, currStartMinute);
 

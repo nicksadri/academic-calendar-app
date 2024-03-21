@@ -8,14 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.*;
 
 import android.widget.Button;
 
 public class SeeCoursesActivity extends AppCompatActivity implements RecyclerViewInterface {
     private Button addEvent;
-    private Button toDo;
 
     private static ArrayList<Event> masterList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -27,8 +25,6 @@ public class SeeCoursesActivity extends AppCompatActivity implements RecyclerVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.courses_view);
-
-        toDo = findViewById(R.id.to_do_button_main);
 
         recyclerView = findViewById(R.id.coursesRecyclerView);
         adapter = new CourseRecyclerViewAdapter(this, masterList, this);
