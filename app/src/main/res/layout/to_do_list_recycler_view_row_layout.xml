@@ -76,7 +76,7 @@
             android:layout_marginBottom="2dp"
             android:text="Delete" />
 
-        <Button
+        <CheckBox
             android:id="@+id/completedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,6 +88,7 @@
             android:layout_marginBottom="-2dp"
             android:layout_toStartOf="@+id/deleteToDoItem"
             android:layout_toEndOf="@+id/editToDoButton"
+            android:buttonTint="#673AB7"
             android:text="Done" />
 
     </RelativeLayout>
