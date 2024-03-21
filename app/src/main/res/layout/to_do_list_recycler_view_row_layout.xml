@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="0dp"
             android:layout_marginBottom="2dp"
             android:text="Edit" />
 
@@ -72,21 +72,17 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="3dp"
             android:layout_marginBottom="2dp"
             android:text="Delete" />
 
-        <Button
+        <CheckBox
             android:id="@+id/completedButton"
-            android:layout_width="wrap_content"
+            android:layout_width="156dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/to_do_list_task_title"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginBottom="-2dp"
-            android:layout_toStartOf="@+id/deleteToDoItem"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="2dp"
             android:layout_toEndOf="@+id/editToDoButton"
             android:text="Done" />
 
