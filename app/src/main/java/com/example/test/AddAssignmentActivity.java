@@ -20,15 +20,28 @@ public class AddAssignmentActivity extends AppCompatActivity {
     private TextInputEditText date;
     private TextInputEditText assignmentTitle;
     private Assignment assignmentToAdd;
+    private Assignment toBeRemoved = null;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_assignment);
+
+        Intent intent = getIntent();
+        int pos = intent.getIntExtra("pos", -1);
+
         courseName = findViewById(R.id.enter_course_assign);
         date = findViewById(R.id.enter_date_assign);
         assignmentTitle = findViewById(R.id.enter_title_assign);
+
+        if (pos != -1) {
+            Assignment assignment = (Assignment) SeeAssignmentsActivity.getMasterList().get(pos);
+            courseName.setText(assignment.getCourseName());
+            date.setText("" + assignment.getMonth() + "/" + assignment.getDay() + "/" + assignment.getYear());
+            assignmentTitle.setText(assignment.getAssignmentTitle());
+            toBeRemoved = assignment;
+        }
 
         done = findViewById(R.id.done_button_assign);
         done.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +57,9 @@ public class AddAssignmentActivity extends AppCompatActivity {
                     assignmentToAdd = new Assignment(year, month, day, courseName.getText().toString(), assignmentTitle.getText().toString());
 
                     SeeAssignmentsActivity.getMasterList().add(assignmentToAdd);
+                    if (toBeRemoved != null) {
+                        SeeAssignmentsActivity.getMasterList().remove(toBeRemoved);
+                    }
                     SeeAssignmentsActivity.getAdapter().notifyDataSetChanged();
                     Intent intent = new Intent(AddAssignmentActivity.this, SeeAssignmentsActivity.class);
                     startActivity(intent);

@@ -82,8 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Cancel/Delete"
         android:backgroundTint="#0d19ba"
+        android:text="Cancel"
         app:layout_constraintEnd_toStartOf="@+id/done_button_assess"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter_location_assess" />

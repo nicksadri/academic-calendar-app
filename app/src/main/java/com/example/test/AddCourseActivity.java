@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class AddCourseActivity extends AppCompatActivity {
     //How do we let the user know that if they type regular event, they don't need classname or instructor??
@@ -26,6 +27,7 @@ public class AddCourseActivity extends AppCompatActivity {
     private TextInputEditText meetingDays;
     private TextInputEditText section;
     private Course courseToAdd;
+    private Course toBeRemoved = null;
 
 
     @SuppressLint("MissingInflatedId")
@@ -44,18 +46,26 @@ public class AddCourseActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int pos = intent.getIntExtra("pos", -1);
 
-//        if (pos != -1) {
-//            Course course = (Course) Data.events.get(pos);
-//            time.setText("" + course.getStartHour() + ":" + course.getStartMinute());
-//            courseName.setText(course.getCourseName());
-//            date.setText("" + course.getMonth() + "/" + course.getDay() + "/" + course.getYear());
-//            location.setText(course.getBuilding_AND_room());
-//            professor.setText(course.getProfessor());
-//            //Ask Ben how stuff below works
-//            meetingDays.setText(course.getDaysOfWeekSet().toString());
-//            section.setText(course.getClassSection());
-//            Data.tasks.remove(course);
-//        }
+        if (pos != -1) {
+            Course course = (Course) SeeCoursesActivity.getMasterList().get(pos);
+            time.setText("" + course.getStartHour() + ":" + course.getStartMinute());
+            courseName.setText(course.getCourseName());
+            date.setText("" + course.getMonth() + "/" + course.getDay() + "/" + course.getYear());
+            location.setText(course.getBuilding_AND_room());
+            professor.setText(course.getProfessor());
+            //Ask Ben how stuff below works
+            String days = "";
+            for (String s : course.getDaysOfWeekSet()) {
+                days += s + ",";
+            }
+            meetingDays.setText(days);
+            section.setText(course.getClassSection());
+            HashSet<String> temp = course.getDaysOfWeekSet();
+            String[] daysOfWeek = new String[course.getDaysOfWeekSet().size()];
+            temp.toArray(daysOfWeek);
+
+            toBeRemoved = course;
+        }
 
         done = findViewById(R.id.done_button_course);
         done.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +90,9 @@ public class AddCourseActivity extends AppCompatActivity {
                             meetingDaysArray);
 
                     SeeCoursesActivity.getMasterList().add(courseToAdd);
+                    if (toBeRemoved != null) {
+                        SeeCoursesActivity.getMasterList().remove(toBeRemoved);
+                    }
                     SeeCoursesActivity.getAdapter().notifyDataSetChanged();
                     Intent intent = new Intent(AddCourseActivity.this, SeeCoursesActivity.class);
                     startActivity(intent);
