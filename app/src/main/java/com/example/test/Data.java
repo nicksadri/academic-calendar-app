@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
-    public static ArrayList<Task> tasks = new ArrayList<>();;
+    public static ArrayList<Task> tasks = new ArrayList<>();
+    public static ArrayList<Exam> exams = new ArrayList<>();
     public static int pos = 0;
 
     public static void deleteToDoAtPos(int pos) {

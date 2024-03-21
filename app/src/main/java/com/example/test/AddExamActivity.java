@@ -21,17 +21,33 @@ public class AddExamActivity extends AppCompatActivity {
     private TextInputEditText location;
     private TextInputEditText assessTitle;
     private Exam assessmentToAdd;
+    private Exam toBeRemoved = null;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_assessment);
+
+        Intent intent = getIntent();
+        int pos = intent.getIntExtra("pos", -1);
+
         courseName = findViewById(R.id.enter_course_assess);
         date = findViewById(R.id.enter_date_assess);
         time = findViewById(R.id.enter_time_assess);
         location = findViewById(R.id.enter_location_assess);
         assessTitle = findViewById(R.id.enter_title_assess);
+
+        if (pos != -1) {
+            Exam exam = (Exam) (SeeExamsActivity.getMasterList().get(pos));
+            courseName.setText(exam.getCourseName());
+            date.setText("" + exam.getMonth() + "/" + exam.getDay() + "/" + exam.getYear());
+            time.setText(exam.getStartHour() + ":" + exam.getStartMinute());
+            location.setText(exam.getBuilding_AND_room());
+            assessTitle.setText(exam.getTestTitle());
+
+            toBeRemoved = new Exam(exam.getYear(), exam.getMonth(), exam.getDay(), exam.getCourseName(), exam.getTestTitle(), exam.getBuilding_AND_room(), exam.getStartHour(), exam.getStartMinute());
+        }
 
 
         done = findViewById(R.id.done_button_assess);
@@ -55,6 +71,9 @@ public class AddExamActivity extends AppCompatActivity {
                     currStartHour, currStartMinute);
 
                     SeeExamsActivity.getMasterList().add(assessmentToAdd);
+                    if (toBeRemoved != null) {
+                        SeeExamsActivity.getMasterList().remove(toBeRemoved);
+                    }
                     SeeExamsActivity.getAdapter().notifyDataSetChanged();
                     Intent intent = new Intent(AddExamActivity.this, SeeExamsActivity.class);
                     startActivity(intent);
