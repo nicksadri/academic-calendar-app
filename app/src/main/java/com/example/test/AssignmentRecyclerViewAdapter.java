@@ -57,6 +57,14 @@ public class AssignmentRecyclerViewAdapter extends RecyclerView.Adapter<Assignme
                     startActivity(v.getContext(), intent, null);
                 }
             });
+
+            view.findViewById(R.id.deleteItemButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SeeAssignmentsActivity.getMasterList().remove(getAdapterPosition());
+                    SeeAssignmentsActivity.itemRemovedAssigment(getAdapterPosition());
+                }
+            });
         }
 
         public TextView getCourseName() {

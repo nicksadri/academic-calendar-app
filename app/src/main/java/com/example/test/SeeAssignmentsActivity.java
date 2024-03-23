@@ -66,6 +66,9 @@ public class SeeAssignmentsActivity extends AppCompatActivity implements Recycle
     public static AssignmentRecyclerViewAdapter getAdapter() {
         return adapter;
     }
+    public static void itemRemovedAssigment(int pos) {
+        adapter.notifyItemRemoved(pos);
+    }
 
 
 }

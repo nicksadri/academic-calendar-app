@@ -56,6 +56,14 @@ public class ExamRecyclerViewAdapter extends RecyclerView.Adapter<ExamRecyclerVi
                     startActivity(v.getContext(), intent, null);
                 }
             });
+
+            view.findViewById(R.id.deleteItemButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SeeExamsActivity.getMasterList().remove(getAdapterPosition());
+                    SeeExamsActivity.itemRemovedExam(getAdapterPosition());
+                }
+            });
         }
 
         public TextView getCourseName() {

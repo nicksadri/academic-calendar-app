@@ -67,5 +67,9 @@ public class SeeExamsActivity extends AppCompatActivity implements RecyclerViewI
         return adapter;
     }
 
+    public static void itemRemovedExam(int pos) {
+        adapter.notifyItemRemoved(pos);
+    }
+
 
 }

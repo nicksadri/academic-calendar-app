@@ -66,5 +66,9 @@ public class SeeCoursesActivity extends AppCompatActivity implements RecyclerVie
         return adapter;
     }
 
+    public static void itemRemovedCourse(int pos) {
+        adapter.notifyItemRemoved(pos);
+    }
+
 
 }
