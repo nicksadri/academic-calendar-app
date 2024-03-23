@@ -69,7 +69,6 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
         this.recyclerViewInterface = r;
         this.editButton = edit;
         this.deleteButton = delete;
-        this.completedButton = complete;
 
     }
 
@@ -110,8 +109,9 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
                 @Override
                 public void onClick(View v) {
                     Data.tasks.get(getAdapterPosition()).setCompleteness(!Data.tasks.get(getAdapterPosition()).getCompleteness());
+
+//                    ((CheckBox) (view.findViewById(R.id.completedButton))).setChecked(!((CheckBox) (view.findViewById(R.id.completedButton))).isChecked());
                     ToDoListActivity.getToDoListAdapter().notifyDataSetChanged();
-                    ((CheckBox) (view.findViewById(R.id.completedButton))).setChecked(!((CheckBox) (view.findViewById(R.id.completedButton))).isChecked());
 
                 }
             });
@@ -148,6 +148,7 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
         date = view.findViewById(R.id.to_do_list_date);
         taskTitle = view.findViewById(R.id.to_do_list_task_title);
         completeness = view.findViewById(R.id.to_do_list_completeness);
+        this.completedButton = view.findViewById(R.id.completedButton);
 
         return new ViewHolder(view, recyclerViewInterface);
     }
@@ -181,15 +182,16 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
                 viewHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
             }
         } else {
-//            for (int i = 0; i < Data.tasks.size(); i++) {
-//                viewHolder.itemView.setVisibility(View.VISIBLE);
-//            }
+
         }
 
 
-//        if (Data.tasks.get(viewHolder.getAdapterPosition()).getCompleteness() == true) {
-//            ToDoListActivity.getCompletedButton().setChecked(true);
-//        }
+
+        if (Data.tasks.get(viewHolder.getAdapterPosition()).getCompleteness() == true) {
+            ((CheckBox) (completedButton)).setChecked(true);
+        } else {
+            ((CheckBox) (completedButton)).setChecked(false);
+        }
 
 
     }
