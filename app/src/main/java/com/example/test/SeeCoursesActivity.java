@@ -52,10 +52,10 @@ public class SeeCoursesActivity extends AppCompatActivity implements RecyclerVie
 
     @Override
     public void whenClicked(int pos) {
-        Intent intent1 = new Intent(SeeCoursesActivity.this, AddCourseActivity.class);
-        intent1.putExtra("pos", pos);
-        startActivity(intent1);
-        masterList.remove(pos);
+//        Intent intent1 = new Intent(SeeCoursesActivity.this, AddCourseActivity.class);
+//        intent1.putExtra("pos", pos);
+//        startActivity(intent1);
+//        masterList.remove(pos);
     }
 
     public static ArrayList<Event> getMasterList() {

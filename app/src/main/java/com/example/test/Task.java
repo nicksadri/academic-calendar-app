@@ -17,4 +17,8 @@ public class Task extends Event {
     public boolean getCompleteness() {
         return completeness;
     }
+
+    public void setCompleteness(boolean completeness) {
+        this.completeness = completeness;
+    }
 }

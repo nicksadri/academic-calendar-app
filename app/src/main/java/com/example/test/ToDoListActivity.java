@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,8 +20,9 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
     private Button returnButton;
     private Button editToDoButton;
     private Button deleteToDoButton;
-    private Button completedButton;
+    private static CheckBox completedButton;
     private Button dateSortButton;
+    private static CheckBox filterComplete;
 
     //private static ArrayList<Task> taskMasterList = Data.tasks;
     private RecyclerView toDoListRecyclerView;
@@ -40,8 +42,9 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
         returnButton = findViewById(R.id.return_button);
         editToDoButton = findViewById(R.id.editToDoButton);
         deleteToDoButton = findViewById(R.id.deleteToDoItem);
-        completedButton = findViewById(R.id.completedButton);
+        this.completedButton = findViewById(R.id.completedButton);
         this.dateSortButton = findViewById(R.id.sortByDateButton);
+        this.filterComplete = findViewById(R.id.filterComplete);
 
 
         toDoListRecyclerView = findViewById(R.id.recyclerViewForToDo);
@@ -78,6 +81,14 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
 
     public void nameSort(View view) {
         toDoListAdapter.update(Data.sortByTaskTitle());
+    }
+
+    public void filterComplete(View view) {
+        toDoListAdapter.notifyDataSetChanged();
+    }
+
+    public void checkOffTask(View view) {
+
     }
 
     // Updates the recyclerView after delete button is pressed
@@ -141,4 +152,11 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
         Log.d("Status", "Destroyed");
     }
 
+    public static CheckBox getFilterComplete() {
+        return filterComplete;
+    }
+
+    public static CheckBox getCompletedButton() {
+        return completedButton;
+    }
 }

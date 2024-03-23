@@ -54,9 +54,9 @@ public class SeeExamsActivity extends AppCompatActivity implements RecyclerViewI
 
     @Override
     public void whenClicked(int pos) {
-        Intent intent3 = new Intent(SeeExamsActivity.this, AddExamActivity.class);
-        startActivity(intent3);
-        masterList.remove(pos);
+//        Intent intent3 = new Intent(SeeExamsActivity.this, AddExamActivity.class);
+//        startActivity(intent3);
+//        masterList.remove(pos);
     }
 
     public static ArrayList<Event> getMasterList() {

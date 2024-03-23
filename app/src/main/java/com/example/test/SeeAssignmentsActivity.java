@@ -54,9 +54,9 @@ public class SeeAssignmentsActivity extends AppCompatActivity implements Recycle
 
     @Override
     public void whenClicked(int pos) {
-        Intent intent2 = new Intent(SeeAssignmentsActivity.this, AddAssignmentActivity.class);
-        startActivity(intent2);
-        masterList.remove(pos);
+//        Intent intent2 = new Intent(SeeAssignmentsActivity.this, AddAssignmentActivity.class);
+//        startActivity(intent2);
+//        masterList.remove(pos);
     }
 
     public static ArrayList<Event> getMasterList() {

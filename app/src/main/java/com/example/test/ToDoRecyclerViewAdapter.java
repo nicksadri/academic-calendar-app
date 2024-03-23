@@ -31,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,7 +92,7 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
 
                     intent.putExtra("pos", getAdapterPosition());
                     startActivity(v.getContext(), intent, null);
-                   // ToDoListActivity.updateToDoRecyclerView(getAdapterPosition());
+//                    ToDoListActivity.updateToDoRecyclerView(getAdapterPosition());
                 }
             });
 
@@ -108,6 +109,9 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
             view.findViewById(R.id.completedButton).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Data.tasks.get(getAdapterPosition()).setCompleteness(!Data.tasks.get(getAdapterPosition()).getCompleteness());
+                    ToDoListActivity.getToDoListAdapter().notifyDataSetChanged();
+                    ((CheckBox) (view.findViewById(R.id.completedButton))).setChecked(!((CheckBox) (view.findViewById(R.id.completedButton))).isChecked());
 
                 }
             });
@@ -170,7 +174,38 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
                 }
             }
         });
+
+        if (ToDoListActivity.getFilterComplete().isChecked()) {
+            if (Data.tasks.get(viewHolder.getAdapterPosition()).getCompleteness() == true) {
+                viewHolder.itemView.setVisibility(View.GONE);
+                viewHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+            }
+        } else {
+//            for (int i = 0; i < Data.tasks.size(); i++) {
+//                viewHolder.itemView.setVisibility(View.VISIBLE);
+//            }
+        }
+
+
+//        if (Data.tasks.get(viewHolder.getAdapterPosition()).getCompleteness() == true) {
+//            ToDoListActivity.getCompletedButton().setChecked(true);
+//        }
+
+
     }
+
+//    public void filterComplete(View view) {
+//        if (((CheckBox) view).isChecked()) {
+//            for ( v : toDoListAdapter) {
+//                if (t.getCompleteness() == true) {
+//                    t.setVisibility(View.GONE);
+//                    t.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+//                }
+//            }
+//        } else {
+//
+//        }
+//    }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
