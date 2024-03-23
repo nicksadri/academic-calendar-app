@@ -94,6 +94,7 @@ public class ToDoListActivity extends AppCompatActivity implements RecyclerViewI
     // Updates the recyclerView after delete button is pressed
     public static void updateToDoRemovedRecyclerView(int pos) {
         toDoListAdapter.notifyItemRemoved(pos);
+        toDoListAdapter.notifyDataSetChanged();
     }
 
     @Override
