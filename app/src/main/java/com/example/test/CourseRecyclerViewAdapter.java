@@ -25,17 +25,22 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView courseName;
+        private TextView courseNameAndSection;
         private TextView date;
         private TextView location;
-        private TextView professorOrTitle;
+        private TextView professor;
+        private TextView time;
+        private TextView days;
 
         public ViewHolder(View view, RecyclerViewInterface recyclerViewInterface) {
             super(view);
-            courseName = view.findViewById(R.id.courseName);
-            date = view.findViewById(R.id.date);
-            location = view.findViewById(R.id.location);
-            professorOrTitle = view.findViewById(R.id.professorOrTitle);
+            courseNameAndSection = view.findViewById(R.id.rv_courseName);
+            date = view.findViewById(R.id.rv_courseDate);
+            location = view.findViewById(R.id.rv_courseLocation);
+            professor = view.findViewById(R.id.rv_course_professorANDsection);
+            time = view.findViewById(R.id.rv_courseTime);
+            days = view.findViewById(R.id.rv_course_meetDays);
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -68,7 +73,7 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         }
 
         public TextView getCourseName() {
-            return courseName;
+            return courseNameAndSection;
         }
 
         public TextView getDate() {
@@ -80,9 +85,16 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         }
 
         public TextView getProfessorOrTitle() {
-            return professorOrTitle;
+            return professor;
         }
 
+        public TextView getTime() {
+            return time;
+        }
+
+        public TextView getDays() {
+            return days;
+        }
     }
 
     // Create new views (invoked by the layout manager)
@@ -90,7 +102,7 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.recycler_view_row_layout, viewGroup, false);
+                .inflate(R.layout.recycler_view_row_layout_course, viewGroup, false);
 
         return new ViewHolder(view, recyclerViewInterface);
     }
@@ -103,23 +115,13 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         // contents of the view with that element
 
         Event event = dataArrayList.get(position);
-        viewHolder.getCourseName().setText(event.getCourseName());
-        viewHolder.getDate().setText((String) ("" + event.getMonth() + "/" + event.getDay()));
-        if (event instanceof Course) {
-            viewHolder.getLocation().setText(((Course) (event)).getBuilding_AND_room());
-        }
-        if (event instanceof Exam) {
-            viewHolder.getLocation().setText(((Exam) (event)).getBuilding_AND_room());
-        }
-        if (event instanceof Course) {
-            viewHolder.getProfessorOrTitle().setText(((Course) (event)).getProfessor());
-        }
-        if (event instanceof Assignment) {
-            viewHolder.getProfessorOrTitle().setText(((Assignment) (event)).getAssignmentTitle());
-        }
-        if (event instanceof Exam) {
-            viewHolder.getProfessorOrTitle().setText(((Exam) (event)).getTestTitle());
-        }
+        viewHolder.getCourseName().setText(event.getCourseName() + " " + ((Course) (event)).getClassSection());
+        viewHolder.getDate().setText((String) ("" + event.getMonth() + "/" + event.getDay() + "/" + event.getYear()));
+        viewHolder.getLocation().setText(((Course) (event)).getBuilding_AND_room());
+        viewHolder.getProfessorOrTitle().setText(((Course) (event)).getProfessor());
+        viewHolder.getTime().setText("" + ((Course) (event)).getStartHour() + ":" + String.format("%02d", ((Course) (event)).getStartMinute()));
+        viewHolder.getDays().setText(((Course) (event)).getDaysOfWeekSetString());
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

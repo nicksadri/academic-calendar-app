@@ -43,14 +43,14 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="132dp"
+        android:layout_width="135dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="52dp"
+        android:backgroundTint="#0d19ba"
         android:onClick="seeAssignments"
         android:text="See Assignments"
         android:visibility="visible"
-        android:backgroundTint="#0d19ba"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

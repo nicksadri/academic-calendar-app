@@ -4,6 +4,7 @@ import static androidx.core.content.ContextCompat.startActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,14 +29,16 @@ public class ExamRecyclerViewAdapter extends RecyclerView.Adapter<ExamRecyclerVi
         private TextView courseName;
         private TextView date;
         private TextView location;
-        private TextView professorOrTitle;
+        private TextView title;
+        private TextView time;
 
         public ViewHolder(View view, RecyclerViewInterface recyclerViewInterface) {
             super(view);
-            courseName = view.findViewById(R.id.courseName);
-            date = view.findViewById(R.id.date);
-            location = view.findViewById(R.id.location);
-            professorOrTitle = view.findViewById(R.id.professorOrTitle);
+            courseName = view.findViewById(R.id.rv_courseNameExam);
+            date = view.findViewById(R.id.rv_examDate);
+            location = view.findViewById(R.id.rv_examLocation);
+            title = view.findViewById(R.id.rv_examTitle);
+            time = view.findViewById(R.id.rv_examTime);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -79,9 +82,12 @@ public class ExamRecyclerViewAdapter extends RecyclerView.Adapter<ExamRecyclerVi
         }
 
         public TextView getProfessorOrTitle() {
-            return professorOrTitle;
+            return title;
         }
 
+        public TextView getTime() {
+            return time;
+        }
     }
 
     // Create new views (invoked by the layout manager)
@@ -89,7 +95,7 @@ public class ExamRecyclerViewAdapter extends RecyclerView.Adapter<ExamRecyclerVi
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.recycler_view_row_layout, viewGroup, false);
+                .inflate(R.layout.recycler_view_row_layout_exams, viewGroup, false);
 
         return new ViewHolder(view, recyclerViewInterface);
     }
@@ -103,22 +109,12 @@ public class ExamRecyclerViewAdapter extends RecyclerView.Adapter<ExamRecyclerVi
 
         Event event = dataArrayList.get(position);
         viewHolder.getCourseName().setText(event.getCourseName());
-        viewHolder.getDate().setText((String) ("" + event.getMonth() + "/" + event.getDay()));
-        if (event instanceof Course) {
-            viewHolder.getLocation().setText(((Course) (event)).getBuilding_AND_room());
-        }
-        if (event instanceof Exam) {
-            viewHolder.getLocation().setText(((Exam) (event)).getBuilding_AND_room());
-        }
-        if (event instanceof Course) {
-            viewHolder.getProfessorOrTitle().setText(((Course) (event)).getProfessor());
-        }
-        if (event instanceof Assignment) {
-            viewHolder.getProfessorOrTitle().setText(((Assignment) (event)).getAssignmentTitle());
-        }
-        if (event instanceof Exam) {
-            viewHolder.getProfessorOrTitle().setText(((Exam) (event)).getTestTitle());
-        }
+        viewHolder.getDate().setText((String) ("" + event.getMonth() + "/" + event.getDay() + "/" + event.getYear()));
+        viewHolder.getLocation().setText(((Exam) (event)).getBuilding_AND_room());
+        viewHolder.getProfessorOrTitle().setText(((Exam) (event)).getTestTitle());
+        viewHolder.getTime().setText("" + ((Exam) (event)).getStartHour() + ":" + String.format("%02d", ((Exam) (event)).getStartMinute()));
+
+        Log.d("location test", "" + viewHolder.getLocation().getText());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

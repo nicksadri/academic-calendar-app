@@ -27,15 +27,13 @@ public class AssignmentRecyclerViewAdapter extends RecyclerView.Adapter<Assignme
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView courseName;
         private TextView date;
-        private TextView location;
-        private TextView professorOrTitle;
+        private TextView title;
 
         public ViewHolder(View view, RecyclerViewInterface recyclerViewInterface) {
             super(view);
-            courseName = view.findViewById(R.id.courseName);
-            date = view.findViewById(R.id.date);
-            location = view.findViewById(R.id.location);
-            professorOrTitle = view.findViewById(R.id.professorOrTitle);
+            courseName = view.findViewById(R.id.rv_courseNameAssignment);
+            date = view.findViewById(R.id.rv_AssignmentDate);
+            title = view.findViewById(R.id.rv_AssignmentTitle);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -75,12 +73,8 @@ public class AssignmentRecyclerViewAdapter extends RecyclerView.Adapter<Assignme
             return date;
         }
 
-        public TextView getLocation() {
-            return location;
-        }
-
         public TextView getProfessorOrTitle() {
-            return professorOrTitle;
+            return title;
         }
 
     }
@@ -90,7 +84,7 @@ public class AssignmentRecyclerViewAdapter extends RecyclerView.Adapter<Assignme
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.recycler_view_row_layout, viewGroup, false);
+                .inflate(R.layout.recycler_view_row_layout_assignments, viewGroup, false);
 
         return new ViewHolder(view, recyclerViewInterface);
     }
@@ -104,22 +98,9 @@ public class AssignmentRecyclerViewAdapter extends RecyclerView.Adapter<Assignme
 
         Event event = dataArrayList.get(position);
         viewHolder.getCourseName().setText(event.getCourseName());
-        viewHolder.getDate().setText((String) ("" + event.getMonth() + "/" + event.getDay()));
-        if (event instanceof Course) {
-            viewHolder.getLocation().setText(((Course) (event)).getBuilding_AND_room());
-        }
-        if (event instanceof Exam) {
-            viewHolder.getLocation().setText(((Exam) (event)).getBuilding_AND_room());
-        }
-        if (event instanceof Course) {
-            viewHolder.getProfessorOrTitle().setText(((Course) (event)).getProfessor());
-        }
-        if (event instanceof Assignment) {
-            viewHolder.getProfessorOrTitle().setText(((Assignment) (event)).getAssignmentTitle());
-        }
-        if (event instanceof Exam) {
-            viewHolder.getProfessorOrTitle().setText(((Exam) (event)).getTestTitle());
-        }
+        viewHolder.getDate().setText((String) ("" + event.getMonth() + "/" + event.getDay() + "/" + event.getYear()));
+        viewHolder.getProfessorOrTitle().setText(((Assignment) (event)).getAssignmentTitle());
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

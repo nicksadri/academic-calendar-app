@@ -76,6 +76,17 @@ public class Course extends Event {
         this.startMinute = startMinute;
     }
 
+
+    public String getDaysOfWeekSetString() {
+        StringBuilder s = new StringBuilder();
+        s.append("Meets: ");
+        for (String x : daysOfWeekSet) {
+            s.append(x);
+            s.append(" ");
+        }
+        return s.toString();
+    }
+
     public HashSet<String> getDaysOfWeekSet() {
         return daysOfWeekSet;
     }

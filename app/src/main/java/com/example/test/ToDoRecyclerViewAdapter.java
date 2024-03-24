@@ -161,9 +161,8 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
 
         Task task = Data.tasks.get(position);
         getCourseName().setText(task.getCourseName());
-        getDate().setText((String) ("" + task.getMonth() + "/" + task.getDay()));
+        getDate().setText((String) ("" + task.getMonth() + "/" + task.getDay() + "/" + task.getYear()));
         getTaskTitle().setText(task.getTaskTitle());
-        getCompleteness().setText(task.getCompleteness() ? "complete" : "incomplete");
 
         viewHolder.setIsRecyclable(false);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
