@@ -120,7 +120,7 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         viewHolder.getLocation().setText(((Course) (event)).getBuilding_AND_room());
         viewHolder.getProfessorOrTitle().setText(((Course) (event)).getProfessor());
         viewHolder.getTime().setText("" + ((Course) (event)).getStartHour() + ":" + String.format("%02d", ((Course) (event)).getStartMinute()));
-        viewHolder.getDays().setText(((Course) (event)).getDaysOfWeekSetString());
+        viewHolder.getDays().setText("Meets:" + ((Course) (event)).getDaysOfWeekSetString());
 
     }
 

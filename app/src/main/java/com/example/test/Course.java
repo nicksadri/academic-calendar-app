@@ -79,12 +79,24 @@ public class Course extends Event {
 
     public String getDaysOfWeekSetString() {
         StringBuilder s = new StringBuilder();
-        s.append("Meets: ");
         for (String x : daysOfWeekSet) {
             s.append(x);
             s.append(" ");
         }
-        return s.toString();
+
+        String oldString = s.toString();
+        String newString = "";
+        char ch;
+
+        System.out.print("Original word: ");
+        System.out.println("Geeks"); //Example word
+
+        for (int i = 0; i < oldString.length(); i++)
+        {
+            ch = s.toString().charAt(i);
+            newString= ch + newString;
+        }
+        return newString;
     }
 
     public HashSet<String> getDaysOfWeekSet() {
