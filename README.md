@@ -12,7 +12,7 @@ The schedule page allows students to create courses, exams, and assignments as c
 
 Once an event is created, it can easily be edited or deleted as necesary.
 
-If applicable to the event type, it can also be marked as complete. More details on this functionality can be found under the [to-do list page section](#to-do-list-page).
+If applicable to the event type, it can also be marked as complete. More details on this functionality can be found under the [to-do list page section](#clipboard-to-do-list-page-clipboard).
 
 ## :clipboard: To-do List Page :clipboard:
 The to-do list stores any events that can be completed. For instance, an assignment can be completed, while a course cannot be.
