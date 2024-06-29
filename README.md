@@ -22,4 +22,4 @@ Custom event types can also be made on this page. This is perfect for scenarios 
 To-do list items are filterable by completeness, for when you only want to see what still needs to be completed. They are also sortable by name and date.
 
 ## :busts_in_silhouette: Contributors :busts_in_silhouette:
-Our team consisted of Nickan Sadri, Matthew Hogan, and Ben Irastorza.
+Our team consisted of [Nickan Sadri](https://github.com/nicksadri), [Matthew Hogan](https://github.com/matthewhogan22), and [Ben Irastorza](https://github.com/birastor22).
