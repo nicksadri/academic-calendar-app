@@ -17,7 +17,7 @@ If applicable to the event type, it can also be marked as complete. More details
 ## :clipboard: To-do List Page :clipboard:
 The to-do list stores any events that can be completed. For instance, an assignment can be completed, while a course cannot be.
 
-Custom event types can also be made on this page. This is perfect for scenarios when the student has tasks they'd like to keep track of that are not necessarily coursework (i.e., pay for rent :house:).
+Custom event types can also be made on this page. This is perfect for scenarios when the student has tasks they'd like to keep track of that are not necessarily coursework (i.e., pay for rent).
 
 To-do list items are filterable by completeness, for when you only want to see what still needs to be completed. They are also sortable by name and date.
 
